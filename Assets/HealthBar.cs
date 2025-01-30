@@ -15,17 +15,9 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        waitUntilEnd = new WaitForSeconds(_maxHealth);
-
         _slider.maxValue = _maxHealth;
-        _slider.value = 0;
-    }
-    void Update()
-    {
-        currentTime += Time.deltaTime;
-        t_forLerp = currentTime / _maxHealth;
-        _slider.value = Mathf.Lerp(0, 1, t_forLerp) * _maxHealth;
-        _fillImage.color = Color.Lerp(color1, color2, t_forLerp);
+        _slider.value = _maxHealth;
+        _fillImage.color = color2;
     }
 
     public void Decrease(float minusValue)
