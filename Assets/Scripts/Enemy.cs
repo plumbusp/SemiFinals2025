@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour, IDamageble
 {
+    [SerializeField] float moveSpeed;
     [SerializeField] bool _canFollowPlayer;
     Rigidbody2D rb;
     Transform target;
@@ -20,8 +21,16 @@ public class Enemy : MonoBehaviour, IDamageble
         if (!_canFollowPlayer)
             return;
 
-        moveDirection = target.position - transform.position;
+        moveDirection = (target.position - transform.position).normalized;
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_canFollowPlayer)
+            return;
+
+        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y)* moveSpeed;
     }
 
     public void Damage(float howMuch)
