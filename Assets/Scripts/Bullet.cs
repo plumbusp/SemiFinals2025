@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject _postCollisionEffectPrefab;
     private Rigidbody2D _body2D;
     private Transform parent;
+    private int parentLayerMask;
+
     public void Initialize(Transform parent)
     {
         _body2D = GetComponent<Rigidbody2D>();
@@ -22,8 +24,28 @@ public class Bullet : MonoBehaviour
         gameObject.transform.rotation = spawnTransform.rotation;
         _body2D.AddForce(force, ForceMode2D.Impulse);
     }
+
+    public void Shoot(Vector3 direction, Vector3 rotation, float force, Transform firePoint)
+    {
+        transform.position = firePoint.position;
+        gameObject.SetActive(true);
+        _body2D.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+
+    }
+
+    public void Shoot(Vector3 direction, Vector3 rotation, float force, Transform firePoint, int parentLatyer)
+    {
+        parentLayerMask = parentLatyer; 
+        transform.position = firePoint.position;
+        gameObject.SetActive(true);
+        _body2D.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == parentLayerMask)
+            return;
+
         Debug.Log("Collision " + collision.collider.name);
         Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
         gameObject.SetActive(false);
