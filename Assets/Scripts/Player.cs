@@ -59,4 +59,8 @@ public class Player : MonoBehaviour, IDamageble
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+    public void Damage(float howMuch)
+    {
+        Health -= howMuch;
+    }
 }
