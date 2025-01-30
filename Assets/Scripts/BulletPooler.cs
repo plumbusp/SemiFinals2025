@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class BulletPooler : MonoBehaviour
 {
-    [SerializeField] private Bullet playerBullet;
+    [Header("Bullets Prefabs")]
+    [SerializeField] private Bullet playerBullet, basicElderlyBullet;
     [Header("Bullets Amounts")]
-    [SerializeField] private int playerBulletCount;
+    [SerializeField] private int playerBulletCount, basicElderlyBulletsCount;
 
 
     public static BulletPooler Instance;
@@ -24,6 +25,16 @@ public class BulletPooler : MonoBehaviour
             playerBullets.Enqueue(currentBullet);
         }
         poolDictionary.Add("PlayerBullets", playerBullets);
+
+        Queue<Bullet> basicElderlyBullets = new Queue<Bullet>();
+        for (int i = 0; i < basicElderlyBulletsCount; i++)
+        {
+            currentBullet = Instantiate(basicElderlyBullet, transform);
+            currentBullet.Initialize(transform);
+            basicElderlyBullets.Enqueue(currentBullet);
+        }
+        poolDictionary.Add("BasicElderlyBullets", playerBullets);
+
         Instance = this;
     }
 
