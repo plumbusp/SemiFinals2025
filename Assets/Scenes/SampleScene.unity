@@ -446,6 +446,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3810558519700903848, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810558519700903848, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810558519700903848, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810558519700903848, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810558519700903848, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8780858032423796521, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.52
@@ -470,9 +490,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3444049888894794065, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 929394208}
     - targetCorrespondingSourceObject: {fileID: 3444049888894794065, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 929394214}
@@ -700,20 +717,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3444049888894794065, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
   m_PrefabInstance: {fileID: 538742082}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &929394208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929394207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3c2571e5839864ab3421e48c614447, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _firePoint: {fileID: 0}
-  _fireForce: 0
 --- !u!61 &929394214
 BoxCollider2D:
   m_ObjectHideFlags: 0
