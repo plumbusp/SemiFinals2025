@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccc75824c210394bb1921fb822dab88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 5
   _postCollisionEffectPrefab: {fileID: 7444013587660345066, guid: 6628365de0b25534aa67687ad0f4b54e, type: 3}
 --- !u!61 &5984868900248382263
 BoxCollider2D:

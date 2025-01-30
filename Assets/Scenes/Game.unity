@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2291760249089970040, guid: f625716df0cc53643933b305aac7187f, type: 3}
+      propertyPath: _fireForce
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4000172860885183160, guid: f625716df0cc53643933b305aac7187f, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -231,39 +235,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5426728784613932189, guid: f625716df0cc53643933b305aac7187f, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 282146838}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f625716df0cc53643933b305aac7187f, type: 3}
---- !u!1 &282146836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5426728784613932189, guid: f625716df0cc53643933b305aac7187f, type: 3}
-  m_PrefabInstance: {fileID: 282146835}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &282146838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282146836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bdbb1077f022f44b2bddfd0b61a542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  enemyBullet: {fileID: 9077340076605256206, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-  poolTag: BasicElderlyBullets
-  _firePoint: {fileID: 282146839}
-  _fireForce: 2
-  _timeBetweenBullets: 1.5
---- !u!4 &282146839 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8780465730102025875, guid: f625716df0cc53643933b305aac7187f, type: 3}
-  m_PrefabInstance: {fileID: 282146835}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &327450377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,6 +402,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6839885422293500267, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7089178393870170033, guid: 8baf4e15cf9b1f1458d5915e5ecf59d5, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -530,63 +507,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2888590531052167603
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.007248
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.6292061
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246436551704195772, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966523459817636863, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
-      propertyPath: m_Name
-      value: ElderlyBullet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -595,4 +515,3 @@ SceneRoots:
   - {fileID: 282146835}
   - {fileID: 327450377}
   - {fileID: 540027817}
-  - {fileID: 2888590531052167603}

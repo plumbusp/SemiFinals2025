@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
+    public float damageAmount;
     public event Action<Bullet> OnUsed;
     [SerializeField] private GameObject _postCollisionEffectPrefab;
     private Rigidbody2D _body2D;
@@ -61,6 +62,10 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
+        if(collision.collider.TryGetComponent<IDamageble>(out IDamageble damg))
+        {
+            damg.Damage(damageAmount);
+        }
         gameObject.SetActive(false);
         Debug.Log("Collided with " + collision.gameObject.name);
     }

@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 [RequireComponent (typeof(Rigidbody2D))]
 public class Player : MonoBehaviour, IDamageble
 {
+    [Header("Health")]
+    [SerializeField] float health;
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
 
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour, IDamageble
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        _health = health;
     }
 
     void Update()
@@ -69,6 +73,7 @@ public class Player : MonoBehaviour, IDamageble
 
     public void Damage(float howMuch)
     {
+        Debug.Log("Damaging " + name);
         Health -= howMuch;
     }
 }

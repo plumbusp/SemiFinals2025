@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour, IDamageble
 {
+    [Header("Health")]
+    [SerializeField] float health;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] Bullet enemyBullet;
@@ -54,7 +57,7 @@ public class Enemy : MonoBehaviour, IDamageble
             _health = value;
             if (_health < 0)
             {
-                Debug.LogWarning("ENEMY DIED" + name);
+                Destroy(gameObject);
             }
         }
 
@@ -66,6 +69,8 @@ public class Enemy : MonoBehaviour, IDamageble
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
         _waitBetweenBullets = new WaitForSeconds(_timeBetweenBullets);
+
+        _health = health;
 
         CanFollowPlayer = true;
     }

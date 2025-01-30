@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 5138685188615435246}
   - component: {fileID: 5218350387165129603}
   - component: {fileID: 3593129376957967735}
+  - component: {fileID: 2291760249089970040}
   - component: {fileID: 6684136647032451409}
   m_Layer: 0
   m_Name: Enemy ver 2
@@ -411,6 +412,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2291760249089970040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426728784613932189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bdbb1077f022f44b2bddfd0b61a542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  moveSpeed: 1
+  enemyBullet: {fileID: 9077340076605256206, guid: b8f8ac3f07ea5824388acb679ae4f2f2, type: 3}
+  poolTag: BasicElderlyBullets
+  _firePoint: {fileID: 8780465730102025875}
+  _fireForce: 2
+  _timeBetweenBullets: 1.5
 --- !u!61 &6684136647032451409
 BoxCollider2D:
   m_ObjectHideFlags: 0
