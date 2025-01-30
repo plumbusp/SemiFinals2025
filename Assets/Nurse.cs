@@ -18,6 +18,8 @@ public class Nurse : MonoBehaviour, IDamageble, IEnemy
     private Vector2 moveDirection;
 
 
+    private Player currentPlayer;
+
     bool _canFollowPlayer;
     public bool CanFollowPlayer
     {
@@ -43,7 +45,7 @@ public class Nurse : MonoBehaviour, IDamageble, IEnemy
             _health = value;
             if (_health < 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
@@ -52,6 +54,7 @@ public class Nurse : MonoBehaviour, IDamageble, IEnemy
 
     private void Start()
     {
+        _health = health;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.Find("Player").GetComponent<Transform>();
@@ -84,23 +87,14 @@ public class Nurse : MonoBehaviour, IDamageble, IEnemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            normalPlayerSpeed = collision.gameObject.GetComponent<Player>().moveSpeed;
-            collision.gameObject.GetComponent<Player>().moveSpeed = howSlowPlayerIs;
+            currentPlayer = collision.gameObject.GetComponent<Player>();
+            normalPlayerSpeed = currentPlayer.moveSpeed;
+            currentPlayer.moveSpeed = howSlowPlayerIs;
+
             animator.SetBool("IsAtPlayer", true);
             calmDown.SetActive(true);
             _canFollowPlayer = false;
             Debug.Log("(collision.gameObject.CompareTag(\"Player\"))");
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<Player>().moveSpeed = normalPlayerSpeed;
-            animator.SetBool("IsAtPlayer", false);
-            calmDown.SetActive(false);
-            _canFollowPlayer = true;
-            Debug.Log(" EXIT (collision.gameObject.CompareTag(\"Player\"))");
         }
     }
 
@@ -117,4 +111,6 @@ public class Nurse : MonoBehaviour, IDamageble, IEnemy
     {
         CanFollowPlayer = false;
     }
+
+
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float damageAmount;
-    public event Action<Bullet> OnUsed;
     [SerializeField] private GameObject _postCollisionEffectPrefab;
     private Rigidbody2D _body2D;
     private Transform parent;

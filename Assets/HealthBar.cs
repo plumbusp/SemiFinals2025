@@ -5,7 +5,6 @@ public class HealthBar : MonoBehaviour
 {
     [Header("Colorful Time Slider")]
     [SerializeField] Slider _slider;
-    [SerializeField] float _maxHealth;
 
     [SerializeField] private Image _fillImage;
     [SerializeField] private Color color1, color2;
@@ -15,8 +14,12 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        _slider.maxValue = _maxHealth;
-        _slider.value = _maxHealth;
+    }
+
+    public void SetHealth(float maxHealth)
+    {
+        _slider.maxValue = maxHealth;
+        _slider.value = maxHealth;
         _fillImage.color = color2;
     }
 

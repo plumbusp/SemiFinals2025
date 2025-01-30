@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IDamageble
     Vector2 direction;
 
     Animator animator;
+    [SerializeField]private Transform _initialPosition;
 
     private float _health;
     public float Health 
@@ -29,8 +30,9 @@ public class Player : MonoBehaviour, IDamageble
         set
         {
             _health = value;
-            if (_health < 0)
+            if (_health <= 0)
             {
+                Reset();
                 Debug.LogWarning("Game ended");
             }
         }
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour, IDamageble
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         _health = health;
+        healthBar.SetHealth(health);
     }
 
     void Update()
@@ -78,5 +81,20 @@ public class Player : MonoBehaviour, IDamageble
         healthBar.Decrease(howMuch);
         Debug.Log("Damaging " + name);
         Health -= howMuch;
+    }
+
+    private void Reset()
+    {
+        transform.position = _initialPosition.position;
+        healthBar.SetHealth(health);
+        moveSpeed = 7f;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Nurse"))
+        {
+            moveSpeed = 7f;
+        }
     }
 }

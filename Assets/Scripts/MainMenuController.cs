@@ -68,6 +68,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayAudio(MusicType.HappyMusic);
         if (!clickOnlyForButtons)
             return;
 
