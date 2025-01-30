@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IDamageble
     [SerializeField] float health;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
 
     private Rigidbody2D rb;
 
