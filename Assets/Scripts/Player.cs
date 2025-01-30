@@ -51,7 +51,7 @@ public class Player : MonoBehaviour, IDamageble
 		animator.SetFloat("Speed",movement.sqrMagnitude);*/
     }
 
-    // Melhor para trabalhar com física	
+    // Melhor para trabalhar com fÃ­sica	
     void FixedUpdate()
     {
         // Movement
@@ -59,4 +59,8 @@ public class Player : MonoBehaviour, IDamageble
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+    public void Damage(float howMuch)
+    {
+        Health -= howMuch;
+    }
 }
