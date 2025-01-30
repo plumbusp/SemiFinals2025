@@ -4,6 +4,8 @@ using UnityEngine;
 public class BulletPooler : MonoBehaviour
 {
     [Header("Bullets Prefabs")]
+    [SerializeField] Transform playerbulletsParent, enemyBulletParent;
+    [Header("Bullets Prefabs")]
     [SerializeField] private Bullet playerBullet, basicElderlyBullet;
     [Header("Bullets Amounts")]
     [SerializeField] private int playerBulletCount, basicElderlyBulletsCount;
@@ -20,7 +22,7 @@ public class BulletPooler : MonoBehaviour
         Queue<Bullet> playerBullets = new Queue<Bullet>();
         for (int i = 0; i < playerBulletCount; i++)
         {
-            currentBullet = Instantiate(playerBullet, transform);
+            currentBullet = Instantiate(playerBullet, playerbulletsParent);
             currentBullet.Initialize(transform);
             playerBullets.Enqueue(currentBullet);
         }
@@ -29,7 +31,7 @@ public class BulletPooler : MonoBehaviour
         Queue<Bullet> basicElderlyBullets = new Queue<Bullet>();
         for (int i = 0; i < basicElderlyBulletsCount; i++)
         {
-            currentBullet = Instantiate(basicElderlyBullet, transform);
+            currentBullet = Instantiate(basicElderlyBullet, enemyBulletParent);
             currentBullet.Initialize(transform);
             basicElderlyBullets.Enqueue(currentBullet);
         }
@@ -48,6 +50,7 @@ public class BulletPooler : MonoBehaviour
 
         sceneBullets = poolDictionary[tag];
         currentBullet = sceneBullets.Dequeue();
+        Debug.Log(currentBullet.name);
         sceneBullets.Enqueue(currentBullet);
         return currentBullet;
     }
