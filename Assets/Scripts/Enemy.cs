@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody2D))]
-public class Enemy : MonoBehaviour, IDamageble
+public class Enemy : MonoBehaviour, IDamageble, IEnemy
 {
     [Header("Health")]
     [SerializeField] float health;
@@ -71,8 +71,6 @@ public class Enemy : MonoBehaviour, IDamageble
         _waitBetweenBullets = new WaitForSeconds(_timeBetweenBullets);
 
         _health = health;
-
-        CanFollowPlayer = true;
     }
 
     private void Update()
@@ -118,5 +116,14 @@ public class Enemy : MonoBehaviour, IDamageble
             Destroy(currentbullet.gameObject, 9f);
             //currentbullet.Shoot(target.position - transform.position, transform.position - target.position, _fireForce, _firePoint, gameObject.layer);
         } 
+    }
+
+    public void AllowFollowPlayer()
+    {
+        CanFollowPlayer = true;
+    }
+    public void ForbidFollowPlayer()
+    {
+        CanFollowPlayer = false;
     }
 }

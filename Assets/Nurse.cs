@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Nurse : MonoBehaviour, IDamageble
+public class Nurse : MonoBehaviour, IDamageble, IEnemy
 {
     [Header("Health")]
     [SerializeField] float health;
@@ -52,7 +52,6 @@ public class Nurse : MonoBehaviour, IDamageble
 
     private void Start()
     {
-        _canFollowPlayer = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.Find("Player").GetComponent<Transform>();
@@ -110,5 +109,12 @@ public class Nurse : MonoBehaviour, IDamageble
         Health -= howMuch;
     }
 
-
+    public void AllowFollowPlayer()
+    {
+        CanFollowPlayer = true;
+    }
+    public void ForbidFollowPlayer()
+    {
+        CanFollowPlayer = false;
+    }
 }
