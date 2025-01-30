@@ -20,8 +20,7 @@ public class BulletPooler : MonoBehaviour
         for (int i = 0; i < playerBulletCount; i++)
         {
             currentBullet = Instantiate(playerBullet, transform);
-            currentBullet.Initialize();
-            currentBullet.OnUsed += HandlePlayerBulletDie;
+            currentBullet.Initialize(transform);
             playerBullets.Enqueue(currentBullet);
         }
         poolDictionary.Add("PlayerBullets", playerBullets);
@@ -38,11 +37,7 @@ public class BulletPooler : MonoBehaviour
 
         sceneBullets = poolDictionary[tag];
         currentBullet = sceneBullets.Dequeue();
+        sceneBullets.Enqueue(currentBullet);
         return currentBullet;
-    }
-
-    private void HandlePlayerBulletDie(Bullet bullet)
-    {
-        poolDictionary["PlayerBullets"].Enqueue(bullet);
     }
 }

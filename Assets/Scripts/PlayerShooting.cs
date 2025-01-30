@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform _firePoint;
+    [SerializeField] float _fireForce;
 
-    // Update is called once per frame
-    void Update()
+    private Bullet currentbullet;
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentbullet = BulletPooler.Instance.GetPoolObject("PlayerBullets");
+            currentbullet.Shoot(_firePoint, _firePoint.up * _fireForce);
+        }
     }
 }

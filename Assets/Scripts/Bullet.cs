@@ -7,9 +7,12 @@ public class Bullet : MonoBehaviour
     public event Action<Bullet> OnUsed;
     [SerializeField] private GameObject _postCollisionEffectPrefab;
     private Rigidbody2D _body2D;
-    public void Initialize()
+    private Transform parent;
+    public void Initialize(Transform parent)
     {
         _body2D = GetComponent<Rigidbody2D>();
+        this.parent = parent;
+        gameObject.SetActive(false);
     }
 
     public void Shoot(Transform spawnTransform, Vector2 force)
@@ -21,8 +24,8 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Instantiate(_postCollisionEffectPrefab, transform);
+        Debug.Log("Collision " + collision.collider.name);
+        Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
         gameObject.SetActive(false);
-        OnUsed?.Invoke(this);
     }
 }
