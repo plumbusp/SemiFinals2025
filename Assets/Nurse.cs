@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Nurse : MonoBehaviour
+public class Nurse : MonoBehaviour, IDamageble
 {
+    [Header("Health")]
+    [SerializeField] float health;
+
     [SerializeField] private GameObject calmDown;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float howSlowPlayerIs;
@@ -27,6 +30,25 @@ public class Nurse : MonoBehaviour
             _canFollowPlayer = value;
         }
     }
+
+    private float _health;
+    public float Health
+    {
+        get
+        {
+            return _health;
+        }
+        set
+        {
+            _health = value;
+            if (_health < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+    }
+
 
     private void Start()
     {
@@ -82,4 +104,11 @@ public class Nurse : MonoBehaviour
             Debug.Log(" EXIT (collision.gameObject.CompareTag(\"Player\"))");
         }
     }
+
+    public void Damage(float howMuch)
+    {
+        Health -= howMuch;
+    }
+
+
 }

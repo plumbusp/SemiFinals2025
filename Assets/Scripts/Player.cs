@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent (typeof(Rigidbody2D))]
 public class Player : MonoBehaviour, IDamageble
 {
     [Header("Health")]
     [SerializeField] float health;
+    public HealthBar healthBar;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour, IDamageble
         set
         {
             _health = value;
-            if(_health < 0)
+            if (_health < 0)
             {
                 Debug.LogWarning("Game ended");
             }
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour, IDamageble
 
     public void Damage(float howMuch)
     {
+        healthBar.Decrease(howMuch);
         Debug.Log("Damaging " + name);
         Health -= howMuch;
     }
