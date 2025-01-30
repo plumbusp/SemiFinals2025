@@ -6,12 +6,14 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] Transform _firePoint;
     [SerializeField] float _fireForce;
     Rigidbody2D _rb2D;
+    Camera _maincamera;
 
     private Bullet currentbullet;
 
     private void Awake()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        _maincamera = Camera.main;
     }
 
     private void Update()
