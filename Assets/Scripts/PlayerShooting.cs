@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentbullet = BulletPooler.Instance.GetPoolObject("PlayerBullets");
-            currentbullet.Shoot(_firePoint, new Vector2(_firePoint.up.x, _firePoint.up.y) * -_fireForce + _rb2D.linearVelocity);
+            currentbullet.Shoot(_firePoint, new Vector2(_firePoint.up.x, _firePoint.up.y) * _fireForce + _rb2D.linearVelocity);
         }
     }
 }
