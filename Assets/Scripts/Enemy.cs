@@ -110,6 +110,7 @@ public class Enemy : MonoBehaviour, IDamageble
             currentbullet.Initialize(_firePoint);
             //currentbullet = BulletPooler.Instance.GetPoolObject(poolTag);
             currentbullet.Shoot(_firePoint, new Vector2(_firePoint.up.x, _firePoint.up.y) * _fireForce);
+            Destroy(currentbullet.gameObject, 9f);
             //currentbullet.Shoot(target.position - transform.position, transform.position - target.position, _fireForce, _firePoint, gameObject.layer);
         } 
     }

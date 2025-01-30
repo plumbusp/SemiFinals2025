@@ -60,6 +60,8 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
+        gameObject.SetActive(false);
         Debug.Log("Collided with " + collision.gameObject.name);
     }
 
