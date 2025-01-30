@@ -22,6 +22,14 @@ public class Bullet : MonoBehaviour
         gameObject.transform.rotation = spawnTransform.rotation;
         _body2D.AddForce(force, ForceMode2D.Impulse);
     }
+
+    public void Shoot(Vector3 direction, Vector3 rotation, float force, Transform firePoint)
+    {
+        transform.position = firePoint.position;
+        gameObject.SetActive(true);
+        _body2D.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision " + collision.collider.name);

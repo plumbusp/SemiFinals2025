@@ -17,9 +17,12 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+        //Head Movement
         mousePosition = _maincamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 rotation = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.up = rotation;
+        // Head Movement
+
         //float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
@@ -32,6 +35,8 @@ public class PlayerShooting : MonoBehaviour
     private void Shoot()
     {
         currentbullet = BulletPooler.Instance.GetPoolObject("PlayerBullets");
-        currentbullet.Shoot(_firePoint, new Vector2(_firePoint.up.x, _firePoint.up.y) * _fireForce + rb.linearVelocity);
+        var direction = mousePosition - transform.position;
+        var rotation = transform.position - mousePosition;
+        currentbullet.Shoot(direction, rotation, _fireForce, _firePoint);
     }
 }
