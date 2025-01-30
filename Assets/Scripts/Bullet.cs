@@ -41,13 +41,26 @@ public class Bullet : MonoBehaviour
         _body2D.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == parentLayerMask)
-            return;
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("Collision " + collision.collider.name);
+    //    Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
+    //    gameObject.SetActive(false);
+    //}
 
-        Debug.Log("Collision " + collision.collider.name);
-        Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
-        gameObject.SetActive(false);
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (!collision.CompareTag("Player"))
+    //        return;
+
+    //    Debug.Log("Collision " + collision.name);
+    //    Instantiate(_postCollisionEffectPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, transform.up), parent);
+    //    gameObject.SetActive(false);
+    //}
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with " + collision.gameObject.name);
     }
+
 }

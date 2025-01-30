@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour, IDamageble
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed;
+    [SerializeField] Bullet enemyBullet;
 
     [Header("Shooting")]
     [SerializeField] string poolTag;
@@ -105,8 +106,11 @@ public class Enemy : MonoBehaviour, IDamageble
                 break;
 
             Debug.Log("Shoot");
-            currentbullet = BulletPooler.Instance.GetPoolObject(poolTag);
-            currentbullet.Shoot(target.position - transform.position, transform.position - target.position, _fireForce, _firePoint, gameObject.layer);
+            currentbullet = Instantiate(enemyBullet);
+            currentbullet.Initialize(_firePoint);
+            //currentbullet = BulletPooler.Instance.GetPoolObject(poolTag);
+            currentbullet.Shoot(_firePoint, new Vector2(_firePoint.up.x, _firePoint.up.y) * _fireForce);
+            //currentbullet.Shoot(target.position - transform.position, transform.position - target.position, _fireForce, _firePoint, gameObject.layer);
         } 
     }
 }
