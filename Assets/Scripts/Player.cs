@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent (typeof(Rigidbody2D))]
 public class Player : MonoBehaviour, IDamageble
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour, IDamageble
     private Rigidbody2D rb;
 
     Vector2 movement;
+    Vector2 direction;
 
     Animator animator;
 
@@ -43,8 +45,14 @@ public class Player : MonoBehaviour, IDamageble
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
 
-        //animator.SetFloat("x", movement.x);
-        //animator.SetFloat("y", movement.y);
+        //Turn the player
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (direction.sqrMagnitude > 0.01f) // Ensure movement is happening
+        {
+            transform.right = direction.normalized; // Rotate to face movement direction
+        }
+
+        animator.SetFloat("Move", Mathf.Abs(movement.x) + Mathf.Abs(movement.y));
 
         /*animator.SetFloat("Horizontal",movement.x);
 		animator.SetFloat("Vertical",movement.y);
