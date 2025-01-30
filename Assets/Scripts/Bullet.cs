@@ -67,7 +67,7 @@ public class Bullet : MonoBehaviour
             damg.Damage(damageAmount);
         }
         gameObject.SetActive(false);
-        Debug.Log("Collided with " + collision.gameObject.name);
+        //Debug.Log("Collided with " + collision.gameObject.name);
     }
 
 }
